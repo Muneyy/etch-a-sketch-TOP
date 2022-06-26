@@ -4,15 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
+    
     <div class="content">
-        <button class="draw">Draw</button>
-        <button class="reset">Reset</button>
-        <div class="grid-container-test">
+        <div class="controls">
+            <div class="grid-text">
+                <p class="slider-description">Change the grid size (number of boxes) by adjusting the slider below.</p>
+                <p class="text-warning">Note that changing the grid size resets your drawing!</p>
+            </div>
+            <div class="slider-selectedColor">
+                <div class="slider-text-display">
+                    <p class="grid-text-display"></p>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="64" step="1" class="slider" id="myRange">
+                    </div>
+                </div>
+                <button class="change-color" id="selectedColor"></button>
+            </div>
+            <!-- <button class="draw">Draw</button> -->
+            <button class="reset">Reset</button>
+            <div class="grid-settings">
+                <button class="grid-on">Grid On</button>
+                <button class="grid-off">Grid Off</button>
+            </div>
+            <div class="color-buttons">
+                <button class="change-color" id="c691ab"></button>
+                <button class="change-color" id="be6b96"></button>
+                <button class="change-color" id="9d426f"></button>
+                <button class="change-color" id="741b47"></button>
+                <button class="change-color" id="4c1130"></button>
+                
+                <button class="change-color" id="fff72f"></button>
+                <button class="change-color" id="ffd723"></button>
+                <button class="change-color" id="ffb721"></button>
+                <button class="change-color" id="ff9723"></button>
+                <button class="change-color" id="ff7734"></button>
+
+                <button class="change-color" id="e0f0da"></button>
+                <button class="change-color" id="c2e1b5"></button>
+                <button class="change-color" id="a3d291"></button>
+                <button class="change-color" id="85c36c"></button>
+                <button class="change-color" id="66b447"></button>
+
+
+                <button class="change-color" id="white">Erase</button>
+            </div>
+        </div>
+        <div class="the-grid">
+            <div class="grid-container-test">
+            </div>
         </div>
     </div>
     
