@@ -9,9 +9,13 @@ const changeColorButtons = document.querySelectorAll(".change-color");
 const gridOn = document.querySelector(".grid-on");
 const gridOff = document.querySelector(".grid-off");
 const selectedColor = document.getElementById("selectedColor");
+const colorPicker = document.getElementById("colorpicker");
+
+console.log(colorPicker.value);
 
 //Initialize brush color
 const colorButtons = Array.from(document.querySelectorAll('.change-color'));
+let penColor;
 colorButtons.forEach(colorButton => colorButton.addEventListener('click', () => {
     penColor = (colorButton.id);
     selectedColor.style.backgroundColor = `#${penColor}`
@@ -45,6 +49,10 @@ gridOff.addEventListener('click', () => {
     cells.forEach(cell => cell.style.border="0");
 });
 
+colorPicker.addEventListener("input", (e) => {
+    penColor = (colorPicker.value);
+})
+
 function makeGrid(sliderValue) {
     const gridSize = sliderValue * sliderValue;
     const gridContainer = document.querySelector(".grid-container-test");
@@ -55,21 +63,20 @@ function makeGrid(sliderValue) {
 
 
 
+
     
     for (i = 0; i < gridSize; i++) {
         const cell = document.createElement("div");
         cell.classList.add("grid-item");
+        
         gridContainer.appendChild(cell);
         cell.addEventListener('mousedown', changeColor);
-        cell.setAttribute('draggable', false);
     };
-    gridContainer.addEventListener('mousedown', () => {
-        console.log("triggermouseDOWN");
+    window.addEventListener('mousedown', () => {
         addActive();
     });
 
-    gridContainer.addEventListener('mouseup', () => {
-        console.log("triggermouseUP");
+    window.addEventListener('mouseup', () => {
         removeActive();
     });
 }
@@ -78,13 +85,13 @@ function addActive() {
     // console.log("does addActive work?")
     const cells = Array.from(document.querySelectorAll('.grid-item'));
     // console.log(`This happens before error: ${penColor}`);
-    cells.forEach(cell => cell.addEventListener('mouseover', changeColor));
+    cells.forEach(cell => cell.addEventListener('mousemove', changeColor));
+    console.log(window.addEventListener)
 }
 
 function removeActive() {
-
     const cells = Array.from(document.querySelectorAll('.grid-item'));
-    cells.forEach(cell => cell.removeEventListener('mouseover', changeColor));
+    cells.forEach(cell => cell.removeEventListener('mousemove', changeColor));
 }
 
 // const colorChecker = ["aquamarine", "yellow", "red", "green", "violet"];
@@ -96,7 +103,7 @@ colorChecker.forEach(eachColor => {
 });
 // console.log(colorChecker);
 // console.log(colorCheckerTest);
-console.log(`This is ${colorArray}`);
+// console.log(`This is ${colorArray}`);
 
 function changeColor() {
     colorArray.forEach(eachColor => {
@@ -108,12 +115,13 @@ function changeColor() {
     // this.classList.remove(`active-${temp}`);
     // console.log(`This happens before error: ${penColor}`);
     this.classList.add(`active-${penColor}`);
-    console.log(penColor);
+    // console.log(penColor);
 };
 
 reset.addEventListener("click", () => {
+    initialize()
     slider.value = 32;
-    makeGrid(32);
+    // makeGrid(32);
     // const cells = Array.from(document.querySelectorAll('.grid-item'));
     // cells.forEach(cell => {
     //     cell.classList.remove(`active-*`);
@@ -121,7 +129,7 @@ reset.addEventListener("click", () => {
     // });
 });
 
-console.log(PointerEvent);
+console.log(PointerEvent)
 
 
 
